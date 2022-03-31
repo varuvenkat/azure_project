@@ -1,0 +1,118 @@
+{% load static %}
+<html>
+	<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+	<head>
+		<style>
+body{
+        margin: 0;
+}
+/*This part is used to keep oone bg for 1 page*/
+ .bg1 {
+  background: url(/static/images/lp.jpg) no-repeat center; 
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+.bg2{
+  background-color:#ffd9b0;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+.bg1-text {
+  text-align: center;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+		</style>
+	</head>
+	<body>
+<div class="bg1">
+  <nav style="margin: 0%;padding: 0%;">
+    <a href="{% url 'indexfunction' %}"> <img src="{% static 'images/hilton.png' %}" alt="hilton logo" style="width: 3cm;"> </a>
+          {% if not request.session.email %}
+            <a href = "{% url 'registrationpage' %}" style="font-family: 'Rubik', sans-serif; font-size: 25px; position: absolute; top:40px; right: 120px; color: #093050;text-decoration: none; ">
+              Join Us |
+            </a>
+            <a href = "{% url 'loginpage' %}" style="font-family: 'Rubik', sans-serif; font-size: 25px; position: absolute; top:40px; right: 50px; color: #093050;text-decoration: none; ">
+              Login
+          </a>
+          {% else %}
+          <a href = "#" style="font-family: 'Rubik', sans-serif; font-size: 25px; position: absolute; top:40px; right: 139px; color: #093050;text-decoration: none; ">
+            {{request.session.name}} |
+          </a>
+          <a href = "{% url 'logout' %}" style="font-family: 'Rubik', sans-serif; font-size: 25px; position: absolute; top:40px; right: 50px; color: #093050;text-decoration: none; ">
+             Logout
+        </a>
+        <a href = "{%url 'mybookings' %}" style="font-family: 'Rubik', sans-serif; font-size: 25px; position: absolute; top:40px; right: 290px; color: #093050;text-decoration: none; "> My Bookings</a>
+           {% endif %}
+  </nav>
+  <div class="bg1-text">
+    <h1 style="font-family: 'Pacifico', cursive; font-size: 90px; color: whitesmoke;">Welcome to Hilton Hotel</p>
+  </div>
+</div>
+<div class="bg2">
+
+
+<br><br><br><br><br><br><br><br>
+  <center>
+    <h1 style="font-family: 'Rubik', sans-serif; font-size: 60px; color : #25374C ;">How may we Serve you today ?</h1>
+  </center>
+<div class="row">
+  <div class="column">
+    <a href ="{% url 'roombookingpage' %}" style="font-family: 'Rubik', sans-serif; font-size: 40px; text-decoration: none; color: #F55F37;">
+    <img src="{% static 'images/room.png' %}" alt="Guest Room" style="width:100%">
+     <center>
+     Guest Room</a>
+    </center>
+    
+  </div>
+  <div class="column">
+    <a href ="{% url 'foodpage' %}" style="font-family: 'Rubik', sans-serif; font-size: 40px; text-decoration: none; color: #F55F37;">
+    <img src="{% static 'images/food.png' %}" alt="Food" style="width:100%">
+    <center>
+      Food</a>
+    </center>
+  </div>
+  <div class="column">
+    <a href ="{% url 'bigroom' %}" style="font-family: 'Rubik', sans-serif; font-size: 40px; text-decoration: none; color: #F55F37; ">
+    <img src="{% static 'images/meeting.png' %}" alt="Meeting Room" style="width:100%">
+    <center>
+      Meeting Room</a>
+    </center>
+  </div>
+ </div>
+</div>
+
+	</body>
+</html>
